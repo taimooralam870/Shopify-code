@@ -1,5 +1,8 @@
-config.yml
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="https://cdn.tailwindcss.com"></script>
 
+
+config.yml
 development:
   password: shptka_eb756380ebeaeb0e95c1d0cde7c70551 // change with store password
   theme_id: 169218015544 // change the theme id

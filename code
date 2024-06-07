@@ -1,0 +1,106 @@
+config.yml
+
+development:
+  password: shptka_eb756380ebeaeb0e95c1d0cde7c70551 // change with store password
+  theme_id: 169218015544 // change the theme id
+  store: conversion-king-theme-demo.myshopify.com // change with store name
+
+theme download 
+theme watch
+theme watch --allow-live
+
+{{ section.settings.padding }}
+{
+"type": "range",
+"id": "padding",
+"min": 20,
+"max": 100,
+"step": 10,
+"unit": "px",
+"label": "Padding",
+"default": 40
+},
+
+bg-[{{ section.settings.background }}]
+{
+"type": "color_background",
+"id": "background",
+"label": "Background",
+"default": "#00b1ce"
+},
+
+{{ block.settings.heading }}
+{{ block.settings.description }}
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Free shipping"
+            },
+            {
+                "type": "text",
+                "id": "description",
+                "label": "Description",
+                "default": "Free shipping for $ 100 and up"
+            }
+this is for blocks code
+
+ "blocks": [
+      {
+        "type": "benifits",
+        "name": "cards block",
+        "settings": [
+             
+            {
+            "type": "html",
+            "id": "svg",
+            "label": "SVG",
+            "default": "hello"
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Free shipping"
+            },
+            {
+                "type": "text",
+                "id": "description",
+                "label": "Description",
+                "default": "Free shipping for $ 100 and up"
+            }
+        ]
+      }
+    ],
+
+
+button name and links
+{{ section.settings.button_link }}
+bg-[{{ section.settings.btn_clr }}]
+{{ section.settings.btn }}
+{{ section.settings.b-img | img_url: '2000x' }}
+
+
+{
+    "type": "text",
+    "id": "btn",
+    "label": "Button",
+    "default": "Shop Now"
+    },
+    {
+    "type": "color",
+    "id": "btn_clr",
+    "label": "Button Color",
+    "default": "#000000"
+    },
+    {
+    "type": "url",
+    "id": "button_link", 
+    "label": "Button link"
+    }
+ {
+    "type": "image_picker",
+    "id": "b-img",
+    "label": "Bottom Image"
+      
+    } 

@@ -107,3 +107,9 @@ bg-[{{ section.settings.btn_clr }}]
     "label": "Bottom Image"
       
     } 
+Default Image show code 
+{% assign default_image_url = 'https://cdn.shopify.com/s/files/1/0268/4194/0034/files/SSL.png?v=1601541034' %}
+
+<img
+  src="{% if section.settings.img %}{{ section.settings.img | img_url: '2000x' }}{% else %}{{ default_image_url }}{% endif %}"
+  alt="" />

@@ -1,0 +1,179 @@
+<style>
+  .triangle-bottomright {
+    width: 0;
+    height: 0;
+    border-bottom: 50px solid black;
+    border-left: 50px solid transparent;
+  }
+
+  .triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 18px solid #ffff;
+  }
+  .snap-slider {
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    overflow: scroll;
+    overscroll-behavior-x: contain;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    list-style: none;
+  }
+</style>
+
+<style>
+    .snap-slider-blogs{
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    overflow: scroll;
+    overscroll-behavior-x: contain;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    list-style: none;
+    }
+</style>
+{% assign article = section.settings.show_article %}
+{% assign blog = section.settings.blog %}
+
+<section class=" bg-[#f5f5f5] pt-[60px]" style="font-family: 'Poppins';">
+  <div class="bg-[#d8d8d8]">
+    <div class="max-w-[1700px] poppins mx-auto px-[20px] md:py-[80px] py-[40px]">
+      <div class="flex items-center justify-between">
+        <div class="w-full mb-[20px]">
+          <div class="flex gap-[30px] items-center w-full">
+            <h2 class="md:text-[30px] text-[28px] text-[#2d2d2d] md:text-left text-center font-bold w-full">
+              {{ section.settings.title }}
+            </h2>
+            <div class="md:w-[320px] w-[80px] h-[2px] bg-[#007dc6] md:block hidden"></div>
+          </div>
+          <p class="text-[16px] text-[#007dc6] md:text-left text-center">{{ section.settings.discription }}</p>
+        </div>
+
+        <div class="md:!block hidden">
+          <div class="flex md:gap-[10px] relative " data-snap-slider-nav="productSliderBlog">
+            <div
+              class="group"
+              id="prevArrow"
+              data-snap-slider-goto="prev"
+            >
+              <div
+                class="rounded-full border flex items-center justify-center cursor-pointer bg-white border-[#007dc6] w-[43px] h-[43px] group-hover:bg-[#007dc6]"
+              >
+                <svg
+                  class="text-[#007dc6] group-hover:text-white w-[25px]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <div
+              class="group"
+              id="nextArrow"
+              data-snap-slider-goto="next"
+            >
+              <div
+                class="rounded-full border flex items-center justify-center cursor-pointer bg-white border-[#007dc6] w-[43px] h-[43px] group-hover:bg-[#007dc6]"
+              >
+                <svg
+                  class="text-[#007dc6] group-hover:text-white w-[25px]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blogs">
+        <div class="slider md:pt-[30px] flex flex-wrap md:justify-start justify-center  gap-[20px] md:gap-[20px] pt-[20px] snap-slider-blogs flex-nowrap"
+          ddata-snap-slider-prev=".prev-slide-arrow-placer-blog"
+          data-snap-slider-next=".next-slide-arrow-placer-blog"
+          data-snap-slider="productSliderBlog"
+          snap-slider
+          data-image-size="{{images.size}}"
+        >
+          {% for article in blog.articles %}
+            <div class="bg-[#fff] shadow-lg bg-white pt-[20px] md:pt-[50px] max-w-[375px] rounded-md shrink-0">
+              <div class="px-[30px] md:pb-[50px] pb-[20px]">
+                <h2 class="text-[20px] text-black !line-clamp-2">{{ article.title }}</h2>
+                <div class="w-[30px] my-[30px] bg-[#000] h-[2px]"></div>
+                <div class="mb-[23px]">
+                  <div class="text-[15px] text-[#000] !line-clamp-3">{{ article.excerpt }}</div>
+                </div>
+                <a href="{{ article.url }}">
+                  <div class="flex items-center">
+                    <p class="uppercase text-[16px] text-black">read more</p>
+                    <svg
+                      class="text-black w-7 mx-1 z-[20] "
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"></path>
+                    </svg>
+                  </div>
+                </a>
+              </div> 
+
+              <div class="relative">
+                <img
+                  class="object-cover h-[300px] w-full"
+                  src="{{ article.image.src | img_url: '2000x' }}"
+                >
+                <div class="absolute bottom-0 right-0 p-[14px]">
+                  <div class="text-[12px] text-black min-w-[97px] bg-white h-[30px] flex items-center  justify-center">
+                    {{ article.published_at | date: '%b %d, %Y' }}
+                  </div>
+                </div>
+                <div class="absolute top-0 right-0 px-[30px]">
+                  <div class="triangle-down"></div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="flex items-end justify-end md:pt-[40px] pt-[20px]">
+          <a href="{{ section.settings.link }}">
+            <div class="flex items-center">
+              <p class="uppercase md:text-[18px] text-[#333333] text-[16px]">read more</p>
+              <svg
+                class="text-[#333333] w-[3rem] mx-1  "
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"></path>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

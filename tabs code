@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs with Tailwind Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="max-w-7xl mx-auto p-4">
+    <h1 class="text-[30px] font-bold my-[45px] text-center">Messages</h1>
+
+    <!-- Tab Navigation -->
+    <div class="border-gray-300">
+      <nav class="-mb-px flex items-center justify-between">
+        <a href="#" class="nav-link whitespace-nowrap py-4 px-6 border font-medium text-[15px] text-gray-500 hover:text-gray-700 focus:outline-none transition-all ease-in-out duration-200 border-[#666] hover:border-b-4 hover:border-[#548cc3]" onclick="showTab(event, 'orders')">
+          Orders
+        </a>
+        <a href="#" class="nav-link whitespace-nowrap py-4 px-6 border font-medium text-[15px] text-gray-500 hover:text-gray-700 focus:outline-none transition-all ease-in-out duration-200 border-[#666] hover:border-b-4 hover:border-[#548cc3]" onclick="showTab(event, 'messages')">
+          Messages
+        </a>
+        <a href="#" class="nav-link whitespace-nowrap py-4 px-6 border font-medium text-[15px] text-gray-500 hover:text-gray-700 focus:outline-none transition-all ease-in-out duration-200 border-[#666] hover:border-b-4 hover:border-[#548cc3]" onclick="showTab(event, 'addresses')">
+          Addresses
+        </a>
+        <a href="#" class="nav-link whitespace-nowrap py-4 px-6 border font-medium text-[15px] text-gray-500 hover:text-gray-700 focus:outline-none transition-all ease-in-out duration-200 border-[#666] hover:border-b-4 hover:border-[#548cc3]" onclick="showTab(event, 'payment')">
+          Payment Methods
+        </a>
+        <a href="#" class="nav-link whitespace-nowrap py-4 px-6 border font-medium text-[15px] text-gray-500 hover:text-gray-700 focus:outline-none transition-all ease-in-out duration-200 border-[#666] hover:border-b-4 hover:border-[#548cc3]" onclick="showTab(event, 'wishlist')">
+          Wish Lists
+        </a>
+        <a href="#" class="nav-link whitespace-nowrap py-4 px-6 border font-medium text-[15px] text-gray-500 hover:text-gray-700 focus:outline-none transition-all ease-in-out duration-200 border-[#666] hover:border-b-4 hover:border-[#548cc3]" onclick="showTab(event, 'recently-viewed')">
+          Recently Viewed
+        </a>
+        <a href="#" class="nav-link whitespace-nowrap py-4 px-6 border font-medium text-[15px] text-gray-500 hover:text-gray-700 focus:outline-none transition-all ease-in-out duration-200 border-[#666] hover:border-b-4 hover:border-[#548cc3]" onclick="showTab(event, 'settings')">
+          Account Settings
+        </a>
+      </nav>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="mt-6">
+      <div id="orders" class="tab-content hidden">
+        <h2 class="text-xl font-semibold mb-2">Orders</h2>
+        <p class="text-gray-500">No orders to display.</p>
+      </div>
+      <div id="messages" class="tab-content hidden">
+        <h2 class="text-xl font-semibold mb-2">Messages</h2>
+        <p class="text-gray-500">Hello World! Here are your messages.</p>
+      </div>
+      <div id="addresses" class="tab-content hidden">
+        <h2 class="text-xl font-semibold mb-2">Addresses</h2>
+        <p class="text-gray-500">No addresses to display.</p>
+      </div>
+      <div id="payment" class="tab-content hidden">
+        <h2 class="text-xl font-semibold mb-2">Payment Methods</h2>
+        <p class="text-gray-500">No payment methods to display.</p>
+      </div>
+      <div id="wishlist" class="tab-content hidden">
+        <h2 class="text-xl font-semibold mb-2">Wish Lists</h2>
+        <p class="text-gray-500">No wish lists to display.</p>
+      </div>
+      <div id="recently-viewed" class="tab-content hidden">
+        <h2 class="text-xl font-semibold mb-2">Recently Viewed</h2>
+        <p class="text-gray-500">No recently viewed items to display.</p>
+      </div>
+      <div id="settings" class="tab-content hidden">
+        <h2 class="text-xl font-semibold mb-2">Account Settings</h2>
+        <p class="text-gray-500">No account settings to display.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(event, tabName) {
+      event.preventDefault();
+      
+      // Hide all tab content
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => content.classList.add('hidden'));
+      
+      // Remove active state from all links
+      const links = document.querySelectorAll('.nav-link');
+      links.forEach(link => link.classList.remove('border-[#548cc3]', 'border-b-4'));
+      
+      // Show the selected tab content
+      document.getElementById(tabName).classList.remove('hidden');
+      
+      // Add active state to the clicked link
+      event.target.classList.add('border-[#548cc3]', 'border-b-4');
+    }
+    
+    // Show default tab on load (e.g., "Messages")
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('[onclick="showTab(event, \'messages\')"]').click();
+    });
+  </script>
+</body>
+</html>
